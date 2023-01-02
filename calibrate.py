@@ -101,14 +101,13 @@ else:
         if corners == None:
             print ("pass")
         else:
-            ret, rvec, tvec = aruco.estimatePoseBoard(corners, ids, board, newcameramtx, dist) # For a board
-            print ("Rotation ", rvec, "Translation", tvec)
-            if ret != 0:
-                img_aruco = aruco.drawDetectedMarkers(img, corners, ids, (0,255,0))
-                img_aruco = aruco.drawAxis(img_aruco, newcameramtx, dist, rvec, tvec, 10)    # axis length 100 can be changed according to your requirement
-
-            if cv2.waitKey(0) & 0xFF == ord('q'):
-                break;
-        cv2.imshow("World co-ordinate frame axes", img_aruco)
-
+            while True:
+                ret, rvec, tvec = aruco.estimatePoseBoard(corners, ids, board, newcameramtx, dist, np.empty(1), np.empty(1)) # For a board
+                print ("Rotation ", rvec, "Translation", tvec)
+                if ret != 0:
+                    img_aruco = aruco.drawDetectedMarkers(img, corners, ids, (0,255,0))
+                    img_aruco = aruco.drawAxis(img_aruco, newcameramtx, dist, rvec, tvec, 10)    # axis length 100 can be changed according to your requirement
+                cv2.imshow("World co-ordinate frame axes", img_aruco)
+                if cv2.waitKey(0) & 0xFF == ord('q'):
+                    break;
 cv2.destroyAllWindows()
