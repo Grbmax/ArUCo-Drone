@@ -14,7 +14,7 @@ from tqdm import tqdm
 root = Path(__file__).parent.absolute()
 
 # Set this flsg True for calibrating camera and False for validating results real time
-calibrate_camera = False
+calibrate_camera = True
 
 # Set path to the images
 calib_imgs_path = root.joinpath("checkboard")

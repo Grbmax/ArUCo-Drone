@@ -3,7 +3,7 @@ import cv2
 camera = cv2.VideoCapture(0)
 ret, img = camera.read()
 
-path = "/home/grbmax/Desktop/ArUCo-Drone/checkboard/"
+path = "checkboard/"
 count = 0 
 while True:
     name = path + str(count)+".jpg"
